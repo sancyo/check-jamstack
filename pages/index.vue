@@ -7,6 +7,9 @@
         </nuxt-link>
       </li>
     </ul>
+    <p>
+      <nuxt-link to="/use-api">USE API</nuxt-link>
+    </p>
   </div>
 </template>
 
