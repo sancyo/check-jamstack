@@ -13,6 +13,7 @@
       </li>
     </ul>
     <button v-if="isOpen" @click="clickClose()">閉じる</button>
+    <p>{{ data }}</p>
   </div>
 </template>
 
