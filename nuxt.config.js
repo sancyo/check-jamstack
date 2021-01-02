@@ -1,3 +1,4 @@
+import axios from 'axios'
 require('dotenv').config()
 const { API_KEY } = process.env
 export default {
@@ -43,5 +44,18 @@ export default {
   build: {},
   env: {
     API_KEY,
+  },
+  generate: {
+    routes() {
+      return axios
+        .get(`https://designdock02.microcms.io/api/v1/posts`, {
+          headers: { 'X-API-KEY': API_KEY },
+        })
+        .then((res) => {
+          return res.data.contents.map((item) => {
+            return 'use-api/' + item.id
+          })
+        })
+    },
   },
 }
