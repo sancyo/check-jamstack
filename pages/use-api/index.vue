@@ -13,15 +13,6 @@
       </li>
     </ul>
     <button v-if="isOpen" @click="clickClose()">閉じる</button>
-    <h2>通常</h2>
-    <div v-if="isOpen">{{ getData }}</div>
-    <ul>
-      <li v-for="(item, index) in data.contents" :key="index">
-        <nuxt-link :to="{ name: 'use-api-id', params: { id: item.id } }">
-          {{ item.title }}
-        </nuxt-link>
-      </li>
-    </ul>
   </div>
 </template>
 
