@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h2>このページコンテンツをnuxt generateで静的化したい</h2>
-    <p>{{ data }}</p>
+    <p>{{ date.title }}</p>
   </div>
 </template>
 
