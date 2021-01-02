@@ -1,7 +1,19 @@
 <template>
   <div class="container">
     <h2>ここではAPIをたたいてコンテンツを表示します</h2>
-    <p>{{ data }}</p>
+    <ul>
+      <li v-for="(item, index) in data.contents" :key="index">
+        <nuxt-link
+          :to="{ name: 'use-api-id', params: { id: item.id } }"
+          event=""
+          @click.native="clickOpen(item.id)"
+        >
+          {{ item.title }}
+        </nuxt-link>
+      </li>
+    </ul>
+    <button v-if="isOpen" @click="clickClose()">閉じる</button>
+    <div v-if="isOpen">{{ getData }}</div>
   </div>
 </template>
 
@@ -11,7 +23,9 @@ import axios from 'axios'
 export default {
   data() {
     return {
+      isOpen: false,
       data: '',
+      getData: '',
     }
   },
   async created() {
@@ -21,11 +35,28 @@ export default {
         headers: { 'X-API-KEY': 'd8d93431-5281-4b77-8f54-33e795130bca' },
       }
     )
-    console.log(data)
     this.data = data
-    return {
-      data,
-    }
+  },
+  methods: {
+    clickOpen(id) {
+      this.isOpen = true
+      history.pushState({}, 'showPost', `/use-api/${id}`)
+      this.getContent(id)
+    },
+    clickClose() {
+      this.isOpen = false
+      history.back()
+      this.getData = ''
+    },
+    async getContent(id) {
+      const { data } = await axios.get(
+        `https://designdock02.microcms.io/api/v1/posts/${id}`,
+        {
+          headers: { 'X-API-KEY': 'd8d93431-5281-4b77-8f54-33e795130bca' },
+        }
+      )
+      this.getData = data
+    },
   },
 }
 </script>
