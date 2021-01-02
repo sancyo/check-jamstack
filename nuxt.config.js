@@ -53,7 +53,7 @@ export default {
         })
         .then((res) => {
           return res.data.contents.map((item) => {
-            return 'use-api/' + item.id
+            return '/use-api/' + item.id
           })
         })
     },

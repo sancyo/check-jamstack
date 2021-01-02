@@ -31,7 +31,7 @@ export default {
     const { data } = await axios.get(
       `https://designdock02.microcms.io/api/v1/posts`,
       {
-        headers: { 'X-API-KEY': 'd8d93431-5281-4b77-8f54-33e795130bca' },
+        headers: { 'X-API-KEY': process.env.API_KEY },
       }
     )
     this.data = data
