@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h2>ここではAPIをたたいてコンテンツを表示します</h2>
-    <ul>
+    <ul v-if="!isOpen">
       <li v-for="(item, index) in data.contents" :key="index">
         <nuxt-link
           :to="{ name: 'use-api-id', params: { id: item.id } }"
