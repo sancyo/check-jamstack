@@ -13,6 +13,14 @@
     </ul>
     <button v-if="isOpen" @click="clickClose()">閉じる</button>
     <p v-if="isOpen">{{ getData }}</p>
+    <h2>直接アクセス用リンク</h2>
+    <ul v-if="!isOpen">
+      <li v-for="(item, index) in data.contents" :key="index">
+        <a :href="`use-api/${item.id}`">
+          {{ item.title }}
+        </a>
+      </li>
+    </ul>
   </div>
 </template>
 

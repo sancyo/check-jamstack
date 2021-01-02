@@ -8,14 +8,16 @@
       </li>
     </ul>
     <p>
-      <nuxt-link to="/use-api">USE API</nuxt-link>
+      <use-api-link />
     </p>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import UseApiLink from '../components/UseApiLink.vue'
 export default {
+  components: { UseApiLink },
   async asyncData() {
     const { data } = await axios.get(
       'https://designdock02.microcms.io/api/v1/posts',
