@@ -5,7 +5,6 @@
       <li v-for="(item, index) in data.contents" :key="index">
         <nuxt-link
           :to="{ name: 'use-api-id', params: { id: item.id } }"
-          event=""
           @click.native="clickOpen(item.id)"
         >
           {{ item.title }}
